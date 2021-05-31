@@ -1,0 +1,64 @@
+
+<div class="container">
+    <div class="card">
+      <h3 class="text-center mt-4">All users</h3>
+      <div class="card-body">
+        <table  class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">id</th>
+              <th scope="col">user name</th>
+              <th scope="col">email</th>
+              <th scope="col">password</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let i of data">
+            <tr>
+              <th scope="row">{{i.id}}</th>
+              <td>{{i.userName}}</td>
+              <td>{{i.emailId}}</td>
+              <td>{{i.password}}</td>
+              <td>
+                <button type="button" class="btn btn-primary styl" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="edit(i)">
+                  Edit
+                </button>
+                  <button class="btn btn-danger" (click)="deleteuser(i.id)">Delete</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>  
+</div> 
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Update user</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form #updateForm="ngForm" (ngSubmit)="updateUser()">
+          <div class="mb-2">
+            <label for="exampleInputEmail1" class="form-label">Email </label>
+            <input type="text" class="form-control" placeholder="Enter Email" name="email" [(ngModel)]="userToUpdate.emailId">
+          </div>
+          <div class="mb-2">
+            <label for="exampleInputEmail1" class="form-label">User Name</label>
+            <input type="text" class="form-control" placeholder="Enter user name" name="username" [(ngModel)]="userToUpdate.userName">
+          </div>
+          <div class="mb-2">
+            <label for="exampleInputEmail1" class="form-label">Password</label>
+            <input type="text" class="form-control" placeholder="Enter Password" name="password" [(ngModel)]="userToUpdate.password">
+          </div>
+          <button type="button" class="btn btn-secondary styl" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Update</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="card" style="width: 50%; background-color: whitesmoke;">
+    <h1 class="text-center mt-3">Register</h1>
+    <div class="card-body mt-3">
+      <form #Registerform="ngForm" (ngSubmit)="registerUser()">
+          <label for="email"><b>Email</b></label>
+          <input type="text" placeholder="Enter Email" name="email" [(ngModel)]="user.emailId" required>
+          <label for="username"><b>User Name</b></label>
+          <input type="text" placeholder="Enter user name" name="username" [(ngModel)]="user.userName" required>
+      
+          <label for="psw"><b>Password</b></label>
+          <input type="password" class="form-control" placeholder="Enter Password" name="password" [(ngModel)]="user.password" #password="ngModel" required>
+      
+          <label for="psw-repeat"><b>Repeat Password</b></label>
+          <input type="password" class="form-control" placeholder="Repeat Password" name="cpassword" (ngModel)="user.password" #cpassword="ngModel" required>
+          <button type="submit" [disabled]="Registerform.form.invalid" class="registerbtn">Register</button>
+        
+      </form>
+    </div>
+  </div>
+</div>
+
+  
